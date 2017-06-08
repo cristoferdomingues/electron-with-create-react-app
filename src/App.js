@@ -17,14 +17,11 @@ injectTapEventPlugin();
 class App extends Component {
   render() {
     return (
-      /*<Router history={hashHistory}>
+      <Router history={hashHistory}>
         <Route path="/" component={Root}>
           <IndexRoute component={Home} />
         </Route>
-      </Router>*/
-      <Root>
-        <Home />
-      </Root>
+      </Router>
     );
   }
 }

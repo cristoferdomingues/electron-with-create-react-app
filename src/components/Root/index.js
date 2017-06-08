@@ -20,6 +20,12 @@ export default class Root extends Component {
 
   handleToggle = () => this.setState({ openDrawer: !this.state.openDrawer });
 
+  showInfoAlert() {
+    const electron = window.require('electron');
+    const ipc = electron.ipcRenderer;
+    ipc.send('open-information-dialog');
+  }
+
   render() {
     return (
       <MuiThemeProvider muiTheme={muiTheme}>
@@ -31,12 +37,14 @@ export default class Root extends Component {
             open={this.state.openDrawer}
             onRequestChange={openDrawer => this.setState({ openDrawer })}
           >
-            <MenuItem onTouchTap={this.handleClose}>Get Screen Shot</MenuItem>
+            <MenuItem onTouchTap={this.showInfoAlert}>
+              Show Info Altert
+            </MenuItem>
             <MenuItem onTouchTap={this.handleClose}>Print PDF</MenuItem>
           </Drawer>
-          <p className="App-intro">
+          <div className="App-intro">
             {this.props.children}
-          </p>
+          </div>
         </div>
       </MuiThemeProvider>
     );
