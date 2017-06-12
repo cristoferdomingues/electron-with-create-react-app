@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 
 import logo from './../../logo.svg';
 
-class Header extends Component {
+export default class Header extends Component {
   render() {
     return (
       <div>
@@ -20,5 +20,3 @@ class Header extends Component {
     );
   }
 }
-
-export default Header;

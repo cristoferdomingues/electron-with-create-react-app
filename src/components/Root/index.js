@@ -5,6 +5,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { deepOrange500 } from 'material-ui/styles/colors';
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
+import { Link } from 'react-router';
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -20,11 +21,7 @@ export default class Root extends Component {
 
   handleToggle = () => this.setState({ openDrawer: !this.state.openDrawer });
 
-  showInfoAlert() {
-    const electron = window.require('electron');
-    const ipc = electron.ipcRenderer;
-    ipc.send('open-information-dialog');
-  }
+  handleClose = () => this.setState({ openDrawer: false });
 
   render() {
     return (
@@ -37,8 +34,8 @@ export default class Root extends Component {
             open={this.state.openDrawer}
             onRequestChange={openDrawer => this.setState({ openDrawer })}
           >
-            <MenuItem onTouchTap={this.showInfoAlert}>
-              Show Info Altert
+            <MenuItem onTouchTap={this.handleClose}>
+              <Link to="/alerts">Alerts</Link>
             </MenuItem>
             <MenuItem onTouchTap={this.handleClose}>Print PDF</MenuItem>
           </Drawer>

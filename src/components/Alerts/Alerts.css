@@ -1,0 +1,9 @@
+.Alerts-container {
+  height: calc(100vh - 310px);
+}
+
+.Alerts-content {
+  height: 100%;
+  overflow: auto;
+  padding: 13px;
+}
