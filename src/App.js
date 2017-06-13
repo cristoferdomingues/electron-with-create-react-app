@@ -1,16 +1,12 @@
 import './App.css';
 import React, { Component } from 'react';
-import { Root, Home, Alerts, Info, Error } from './components';
-import { Router, Route, Link, IndexRoute, hashHistory } from 'react-router';
+import { Root, Home, Alerts, Info, Error, PDF, Printer } from './components';
+import { Router, Route, IndexRoute, hashHistory } from 'react-router';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
 class App extends Component {
-  constructor() {
-    super();
-    console.log('Info', Info);
-  }
   render() {
     return (
       <Router history={hashHistory}>
@@ -21,6 +17,8 @@ class App extends Component {
             <Route path="information" component={Info} />
             <Route path="error" component={Error} />
           </Route>
+          <Route path="/pdf" component={PDF} />
+          <Route path="/printer" component={Printer} />
         </Route>
       </Router>
     );

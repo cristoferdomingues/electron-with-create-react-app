@@ -4,12 +4,11 @@ import {
   BottomNavigationItem
 } from 'material-ui/BottomNavigation';
 import Paper from 'material-ui/Paper';
-import IconLocationOn from 'material-ui/svg-icons/communication/location-on';
 import IconInfo from 'material-ui/svg-icons/alert/warning';
-import { browserHistory } from 'react-router';
+import IconError from 'material-ui/svg-icons/alert/error';
 
 const infoIcon = <IconInfo />;
-const nearbyIcon = <IconLocationOn />;
+const errorIcon = <IconError />;
 
 const dialogsRoutes = {
   0: '/alerts/information',
@@ -25,7 +24,6 @@ export default class AlertsNav extends Component {
   }
 
   select = index => {
-    console.log(this);
     this.setState({ selectedIndex: index });
     this.props.router.push(dialogsRoutes[index]);
   };
@@ -44,14 +42,9 @@ export default class AlertsNav extends Component {
               onTouchTap={() => this.select(0)}
             />
             <BottomNavigationItem
-              label="Favorites"
-              icon={infoIcon}
+              label="Error Dialogs"
+              icon={errorIcon}
               onTouchTap={() => this.select(1)}
-            />
-            <BottomNavigationItem
-              label="Nearby"
-              icon={nearbyIcon}
-              onTouchTap={() => this.select(2)}
             />
           </BottomNavigation>
         </Paper>

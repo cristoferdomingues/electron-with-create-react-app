@@ -1,0 +1,17 @@
+.Sys-info > span > label::after {
+  content: " ";
+}
+
+.Sys-info > span > label {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+.Sys-info > span {
+  display: block;
+  font-style: italic;
+  text-align: justify;
+  margin-left: 30px;
+}
+.Sys-info > p {
+  font-weight: bold;
+}

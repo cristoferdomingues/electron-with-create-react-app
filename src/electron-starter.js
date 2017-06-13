@@ -61,3 +61,7 @@ app.on('activate', function() {
 // code. You can also put them in separate files and require them here.
 
 require('./functions/dialog-info');
+
+require('./functions/pdf');
+
+require('./functions/printer');

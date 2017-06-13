@@ -12,4 +12,8 @@ ipcMain.on('open-information-dialog', function(event) {
   });
 });
 
+ipcMain.on('open-error-dialog', function() {
+  dialog.showErrorBox('An Error Message', 'Demonstrating an error message.');
+});
+
 exports.module;

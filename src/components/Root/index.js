@@ -35,9 +35,17 @@ export default class Root extends Component {
             onRequestChange={openDrawer => this.setState({ openDrawer })}
           >
             <MenuItem onTouchTap={this.handleClose}>
+              <Link to="/">Home</Link>
+            </MenuItem>
+            <MenuItem onTouchTap={this.handleClose}>
               <Link to="/alerts">Alerts</Link>
             </MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>Print PDF</MenuItem>
+            <MenuItem onTouchTap={this.handleClose}>
+              <Link to="/pdf">Print PDF</Link>
+            </MenuItem>
+            <MenuItem onTouchTap={this.handleClose}>
+              <Link to="/printer">Printer</Link>
+            </MenuItem>
           </Drawer>
           <div className="App-intro">
             {this.props.children}
