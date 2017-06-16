@@ -1,3 +1,4 @@
+import './Root.css';
 import React, { Component } from 'react';
 import Header from '../Header';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
@@ -34,17 +35,23 @@ export default class Root extends Component {
             open={this.state.openDrawer}
             onRequestChange={openDrawer => this.setState({ openDrawer })}
           >
-            <MenuItem onTouchTap={this.handleClose}>
-              <Link to="/">Home</Link>
+            <MenuItem onTouchTap={this.handleClose} className="Menu-item">
+              <Link activeClassName="active" to="/">Home</Link>
             </MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>
-              <Link to="/alerts">Alerts</Link>
+            <MenuItem onTouchTap={this.handleClose} className="Menu-item">
+              <Link activeClassName="active" to="/alerts">
+                Alerts
+              </Link>
             </MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>
-              <Link to="/pdf">Print PDF</Link>
+            <MenuItem onTouchTap={this.handleClose} className="Menu-item">
+              <Link activeClassName="active" to="/pdf">
+                Print PDF
+              </Link>
             </MenuItem>
-            <MenuItem onTouchTap={this.handleClose}>
-              <Link to="/printer">Printer</Link>
+            <MenuItem onTouchTap={this.handleClose} className="Menu-item">
+              <Link activeClassName="active" to="/printer">
+                Printer
+              </Link>
             </MenuItem>
           </Drawer>
           <div className="App-intro">

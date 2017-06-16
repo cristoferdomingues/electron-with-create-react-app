@@ -1,21 +1,39 @@
 const electron = require('electron');
 const BrowserWindow = electron.BrowserWindow;
 const ipc = electron.ipcMain;
-
+const url = require('url');
+const path = require('path');
 ipc.on('print', function(event) {
-  console.log('======>Print');
-  const win = new BrowserWindow({ width: 300, height: 300 });
-  win.loadURL('http://lorempixel.com/g/300/300/people');
+  const win = new BrowserWindow({
+    width: 600,
+    height: 800,
+    frame: false,
+    nodeIntegration: false,
+    webPreferences: {
+      webSecurity: false
+    }
+  });
+  const printUrl = url.format({
+    // pathname: path.join(__dirname, '/../../build/index.html'),
+    // protocol: 'file:',
+    pathname: 'www.google.com',
+    protocol: 'http:',
+    slashes: true
+  });
+  win.loadURL(printUrl);
+  win.show();
   win.webContents.on('did-finish-load', () => {
-    console.log('======>did-finish-load');
-    win.webContents.print(
-      { silent: false, printBackground: false, deviceName: '' },
-      function(error, data) {
-        if (error) throw error;
-        event.sender.send('printed');
-        win.close();
-      }
-    );
+    console.log('======>printUrl', printUrl);
+    win.webContents.print({
+      silent: true,
+      printBackground: false,
+      deviceName: ''
+    });
+
+    setTimeout(() => {
+      event.sender.send('printed');
+      win.close();
+    }, 10000);
   });
 });
 
