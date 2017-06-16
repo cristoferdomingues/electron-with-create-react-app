@@ -14,10 +14,8 @@ ipc.on('print', function(event) {
     }
   });
   const printUrl = url.format({
-    // pathname: path.join(__dirname, '/../../build/index.html'),
-    // protocol: 'file:',
-    pathname: 'www.google.com',
-    protocol: 'http:',
+    pathname: path.join(__dirname, '/../../build/index.html'),
+    protocol: 'file:',
     slashes: true
   });
   win.loadURL(printUrl);
