@@ -1,9 +1,11 @@
 const electron = require('electron');
-const BrowserWindow = electron.BrowserWindow;
-const ipc = electron.ipcMain;
 const url = require('url');
 const path = require('path');
-ipc.on('print', function(event) {
+
+const ipc = electron.ipcMain;
+const BrowserWindow = electron.BrowserWindow;
+
+ipc.on('print', function(event, isSilent) {
   const win = new BrowserWindow({
     width: 600,
     height: 800,
@@ -13,17 +15,18 @@ ipc.on('print', function(event) {
       webSecurity: false
     }
   });
+
   const printUrl = url.format({
     pathname: path.join(__dirname, '/../../build/index.html'),
     protocol: 'file:',
     slashes: true
   });
+
   win.loadURL(printUrl);
   win.show();
   win.webContents.on('did-finish-load', () => {
-    console.log('======>printUrl', printUrl);
     win.webContents.print({
-      silent: true,
+      silent: isSilent,
       printBackground: false,
       deviceName: ''
     });
