@@ -42,7 +42,7 @@ class Printer extends Component {
   render() {
     return (
       <div>
-        <h1>Lets print some picture!</h1>
+        <h1>Lets print some Sh*t!!</h1>
         <RaisedButton
           label="Print it!!"
           secondary={true}
